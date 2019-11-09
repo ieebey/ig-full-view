@@ -1,0 +1,76 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Instagram Profil Fotoğrafı Görüntüleyici">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="keywords" content="Instagram Profil Fotoğrafı Görüntüleyici,instagram, full view, instagram full view photo, photo full view, instagram profil fotoğrafı görme, instagram profil foto görüntüleyicisi, instagram profil fotoğrafı görüntüle, instagram fotoğraf görüntüleme" />
+<title>Instagram Profil Fotoğrafı Görüntüleyici</title>
+<script src="/cdn-cgi/apps/head/9NgRN7czImeowF3Yujs__sw0fkU.js"></script><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+function getPhoto(a) {
+  
+  // validation for instagram usernames
+  var regex = new RegExp(/^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/);
+  var validation = regex.test(a);
+
+  if(validation) {
+  
+    $.get("https://www.instagram.com/"+a+"/?__a=1")
+    .done(function(data) { 
+
+      // getting the url
+      var photoURL = data["graphql"]["user"]["profile_pic_url_hd"];
+
+      // update img element
+      $("#photoReturn").attr("src",photoURL);
+	  $("#photoReturn").removeAttr("hidden");
+     
+     })
+    .fail(function() { 
+      // code for 404 error 
+      alert('Kullanıcı Bulunamadı!')
+    })
+  
+  } else {
+  
+    alert('Kullanıcı Bulunamadı!')
+  }
+
+}
+
+  </script>
+<style>
+		.propic {
+		    border: 4px solid #ddd;
+		    border-radius: 4px;
+		    padding: 0.3%;
+		    max-width: 100%;
+		    height: 50%;
+		    width: auto;
+		}
+		body {
+			background:url(arkaplan.png) no-repeat center center fixed;
+			background-size: cover;
+			font-family: Verdana, monospace, sans-serif;
+			font-size: 15px;
+			font-weight: bold;
+			text-align: justify;
+			color: blue;
+			margin-top: 0.3%;
+		}
+	</style>
+</head>
+<body>
+<div class="container"><div align="center"><h1 style=" padding-top: 200px;">İnstagram Profil Fotoğrafı Görüntüleyici</h1>
+<p>Alt kısımda bulunan yere instagram kullanıcı adını giriniz.Başına lütfen "@" eklemeyiniz.</p> </div>
+<div class="input-group mb-3">
+<input type="text" id="usernameInput" name="username" class="form-control" placeholder="kullanıcı adı giriniz (Örnek: iee51)" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+<div align="center"> <input type="submit" value="Ara" class="btn btn-primary" onclick="getPhoto($('#usernameInput').val().trim())"><br></div>
+</div>
+<br /><br /><br /><center><img id="photoReturn" class="propic" src="" hidden /></center>
+</body>
+</html>
