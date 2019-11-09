@@ -3,5 +3,6 @@ Instagram Profil Fotoğrafı Görüntüleyicisi
 
 Hiçbir kurulum yoktur. Dosyaları sitenize upload ederek kullanmaya başlayabilirsiniz.
 
-İbrahim Eren ERKAN - erenerkan.com.tr
+İbrahim Eren ERKAN - www.erenerkan.com.tr
+
     info@erenerkan.com.tr
